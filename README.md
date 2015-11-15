@@ -14,5 +14,5 @@ chmod +x install_ffmpeg.sh
 将input转换为目标码率为4M的1080P的H264视频。也就是刚好满足优酷超清及1080P（视频需超过10分钟）标准的格式。
 
 ```
-ffmpeg -i input -b:v 4000k -minrate 3500k -maxrate 10000k -bufsize 4000k -s 1920x1080 -r 25 -c:v libx264  -ar 48000 -b:a 192k -strict -2 output.mp4
+ffmpeg -i input -b:v 4000k -minrate 3500k -maxrate 10000k -bufsize 4000k -s 1920x1080 -r 25 -g 25 -c:v libx264  -ar 48000 -b:a 192k -strict -2 output.mp4
 ```
