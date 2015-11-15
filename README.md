@@ -1,6 +1,6 @@
 # 在CentOS上安装最新的FFMPEG
 ## 包含 X264 | AAC | MP3 模块
-## 已经在 CentOS 7 中测试
+已经在 CentOS 7 中测试
 
 ### 安装
 
