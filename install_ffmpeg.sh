@@ -1,6 +1,7 @@
 #http://trac.ffmpeg.org/wiki/CompilationGuide/Centos
 
 yum install autoconf automake cmake freetype-devel gcc gcc-c++ git libtool make mercurial nasm pkgconfig zlib-devel -y
+yum remove nasm && hash -r
 
 mkdir ~/ffmpeg_sources
 
