@@ -5,9 +5,9 @@ yum install autoconf automake cmake freetype-devel gcc gcc-c++ git libtool make 
 mkdir ~/ffmpeg_sources
 
 cd ~/ffmpeg_sources
-git clone --depth 1 git://github.com/yasm/yasm.git
-cd yasm
-autoreconf -fiv
+curl -O -L http://www.tortall.net/projects/yasm/releases/yasm-1.3.0.tar.gz
+tar xzvf yasm-1.3.0.tar.gz
+cd yasm-1.3.0
 ./configure --prefix="$HOME/ffmpeg_build" --bindir="$HOME/bin"
 make
 make install
