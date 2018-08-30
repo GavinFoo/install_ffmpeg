@@ -35,32 +35,51 @@ make distclean
 
 
 cd ~/ffmpeg_sources
-git clone --depth 1 git://git.code.sf.net/p/opencore-amr/fdk-aac
+git clone --depth 1 https://github.com/mstorsjo/fdk-aac
 cd fdk-aac
 autoreconf -fiv
 ./configure --prefix="$HOME/ffmpeg_build" --disable-shared
 make
 make install
-make distclean
 
 
 cd ~/ffmpeg_sources
-curl -L -O https://nchc.dl.sourceforge.net/project/lame/lame/3.100/lame-3.100.tar.gz
+curl -O -L http://downloads.sourceforge.net/project/lame/lame/3.100/lame-3.100.tar.gz
 tar xzvf lame-3.100.tar.gz
 cd lame-3.100
 ./configure --prefix="$HOME/ffmpeg_build" --bindir="$HOME/bin" --disable-shared --enable-nasm
 make
 make install
-make distclean
 
 
 cd ~/ffmpeg_sources
-git clone --depth 1 git://source.ffmpeg.org/ffmpeg
-cd ffmpeg
-PKG_CONFIG_PATH="$HOME/ffmpeg_build/lib/pkgconfig" ./configure --prefix="$HOME/ffmpeg_build" --extra-cflags="-I$HOME/ffmpeg_build/include" --extra-ldflags="-L$HOME/ffmpeg_build/lib" --bindir="$HOME/bin" --pkg-config-flags="--static" --enable-gpl --enable-nonfree --enable-libfdk-aac --enable-libfreetype --enable-libmp3lame --enable-libx264
+git clone --depth 1 https://chromium.googlesource.com/webm/libvpx.git
+cd libvpx
+./configure --prefix="$HOME/ffmpeg_build" --disable-examples --disable-unit-tests --enable-vp9-highbitdepth --as=yasm
 make
 make install
-make distclean
+
+cd ~/ffmpeg_sources
+curl -O -L https://ffmpeg.org/releases/ffmpeg-snapshot.tar.bz2
+tar xjvf ffmpeg-snapshot.tar.bz2
+cd ffmpeg
+PATH="$HOME/bin:$PATH" PKG_CONFIG_PATH="$HOME/ffmpeg_build/lib/pkgconfig" ./configure \
+  --prefix="$HOME/ffmpeg_build" \
+  --pkg-config-flags="--static" \
+  --extra-cflags="-I$HOME/ffmpeg_build/include" \
+  --extra-ldflags="-L$HOME/ffmpeg_build/lib" \
+  --extra-libs=-lpthread \
+  --extra-libs=-lm \
+  --bindir="$HOME/bin" \
+  --enable-gpl \
+  --enable-libfdk_aac \
+  --enable-libfreetype \
+  --enable-libmp3lame \
+  --enable-libvpx \
+  --enable-libx264 \
+  --enable-nonfree
+make
+make install
 hash -r
 
 echo "\nDone\n"
