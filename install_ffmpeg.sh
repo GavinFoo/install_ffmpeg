@@ -5,6 +5,16 @@ yum install autoconf automake cmake freetype-devel gcc gcc-c++ git libtool make 
 mkdir ~/ffmpeg_sources
 
 cd ~/ffmpeg_sources
+curl -O -L http://www.nasm.us/pub/nasm/releasebuilds/2.13.02/nasm-2.13.02.tar.bz2
+tar xjvf nasm-2.13.02.tar.bz2
+cd nasm-2.13.02
+./autogen.sh
+./configure --prefix="$HOME/ffmpeg_build" --bindir="$HOME/bin"
+make
+make install
+make distclean
+
+cd ~/ffmpeg_sources
 curl -O -L http://www.tortall.net/projects/yasm/releases/yasm-1.3.0.tar.gz
 tar xzvf yasm-1.3.0.tar.gz
 cd yasm-1.3.0
