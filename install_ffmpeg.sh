@@ -1,5 +1,17 @@
 #http://trac.ffmpeg.org/wiki/CompilationGuide/Centos
 
+wget https://cmake.org/files/v3.15/cmake-3.15.0.tar.gz
+tar xvf cmake-3.15.0.tar.gz && cd cmake-3.15.0/
+./bootstrap
+gmake
+gmake install
+/usr/local/bin/cmake --version
+
+yum remove cmake -y
+ln -s /usr/local/bin/cmake /usr/bin/
+cmake --version
+
+
 yum install autoconf automake bzip2 bzip2-devel cmake freetype-devel gcc gcc-c++ git libtool make mercurial pkgconfig zlib-devel -y
 mkdir ~/ffmpeg_sources
 
