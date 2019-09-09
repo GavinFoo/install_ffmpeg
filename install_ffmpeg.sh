@@ -1,6 +1,6 @@
 #http://trac.ffmpeg.org/wiki/CompilationGuide/Centos
 
-yum install autoconf automake bzip2 bzip2-devel cmake freetype-devel gcc gcc-c++ git libtool make mercurial pkgconfig zlib-devel
+yum install autoconf automake bzip2 bzip2-devel cmake freetype-devel gcc gcc-c++ git libtool make mercurial pkgconfig zlib-devel -y
 mkdir ~/ffmpeg_sources
 
 cd ~/ffmpeg_sources
