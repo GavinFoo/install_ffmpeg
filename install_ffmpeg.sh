@@ -68,11 +68,11 @@ make install
 
 # Install libaom from source.
 mkdir -p ~/ffmpeg_sources/libaom && \
-  cd ~/ffmpeg_sources/libaom && \
-  git clone https://aomedia.googlesource.com/aom && \
-  cmake ./aom && \
-  make && \
-  sudo make install
+cd ~/ffmpeg_sources/libaom && \
+git clone https://aomedia.googlesource.com/aom && \
+cmake ./aom && \
+make
+make install
 
 
 cd ~/ffmpeg_sources
@@ -95,7 +95,6 @@ PATH="$HOME/bin:$PATH" PKG_CONFIG_PATH="$HOME/ffmpeg_build/lib/pkgconfig" ./conf
   --enable-libvpx \
   --enable-libx264 \
   --enable-libx265 \
-  --enable-libaom \
   --enable-nonfree
 make
 make install
